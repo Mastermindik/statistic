@@ -22,6 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 let arr = [];
 let length = 0;
+const people = document.getElementById("people")
 const start = document.getElementById("start")
 const q2 = document.getElementById("q2")
 const q3 = document.getElementById("q3")
@@ -44,7 +45,7 @@ async function getStat() {
     arr.push(doc.data());
   });
   length = arr.length
-  console.log(arr.filter(e => e.leavePage.includes("Форма")));
+  people.innerHTML = length
   start.innerHTML = (arr.filter(e => e.leavePage === "Лендінг").length / length * 100).toFixed(2) + "%"
   q2.innerHTML = (arr.filter(e => e.leavePage === "Стартова сторінка").length / length * 100).toFixed(2) + "%"
   q3.innerHTML = (arr.filter(e => e.leavePage === "Питання 2").length / length * 100).toFixed(2) + "%"
